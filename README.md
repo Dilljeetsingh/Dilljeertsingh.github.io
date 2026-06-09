@@ -1,2 +1,2 @@
-# Deepaksingh.github.io
+# Dilljeetsingh.github.io
 This is my professional portfolio
