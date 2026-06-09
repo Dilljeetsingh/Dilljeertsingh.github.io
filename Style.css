@@ -1,0 +1,658 @@
+/*
+  ============================================================
+  style.css — Deepak Singh Portfolio
+  ------------------------------------------------------------
+  This file controls ALL the visual styling of the portfolio.
+  Organized in the same order as the HTML sections:
+
+    1.  Reset & CSS Variables  → base settings, color palette
+    2.  Base / Body            → default font, background, text
+    3.  Navigation             → sticky top bar
+    4.  Hero                   → headline, bio, buttons, meta strip
+    5.  Section Shared         → padding, labels, titles (reused across all sections)
+    6.  About                  → two-column grid + stat cards
+    7.  Skills                 → skill group cards + tags
+    8.  Projects               → project card grid
+    9.  Experience             → vertical timeline
+    10. Contact                → contact card + links
+    11. Footer                 → bottom bar
+    12. Responsive             → mobile adjustments (max-width: 600px)
+  ============================================================
+*/
+
+
+/* ============================================================
+   1. RESET & CSS VARIABLES
+   ------------------------------------------------------------
+   - box-sizing: border-box makes sizing predictable (padding
+     is included in the element's width, not added on top).
+   - CSS variables (--name) let us reuse colors everywhere.
+     Change a variable once and it updates the whole site.
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* ---- Colour Palette ---- */
+  --white: #ffffff;           /* Pure white — used for card backgrounds */
+  --off: #f7f6f3;             /* Warm off-white — used for section backgrounds */
+  --ink: #1a1a18;             /* Near-black — main text colour */
+  --muted: #6b6b65;           /* Medium grey — secondary/body text */
+  --border: #e4e3de;          /* Light warm grey — borders and dividers */
+
+  --accent: #185FA5;          /* Blue — primary brand colour, links, highlights */
+  --accent-light: #E6F1FB;    /* Light blue — badge/tag backgrounds */
+
+  --teal: #0F6E56;            /* Teal — project tag text */
+  --teal-light: #E1F5EE;      /* Light teal — project tag background */
+
+  --tag-bg: #f0efea;          /* Skill tag background (unused, kept for reference) */
+  --tag-color: #3a3a36;       /* Skill tag text colour */
+
+  --radius: 10px;             /* Default border-radius for cards and buttons */
+}
+
+
+/* ============================================================
+   2. BASE / BODY
+   ------------------------------------------------------------
+   Sets the global font, background, text colour, and line
+   spacing that everything inherits by default.
+   ============================================================ */
+
+html {
+  scroll-behavior: smooth; /* Smooth scrolling when clicking nav links */
+}
+
+body {
+  font-family: 'Inter', sans-serif; /* Clean modern sans-serif from Google Fonts */
+  background: var(--white);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.7; /* Comfortable reading spacing between lines */
+}
+
+
+/* ============================================================
+   3. NAVIGATION
+   ------------------------------------------------------------
+   Sticky bar that stays at the top as the user scrolls.
+   Uses backdrop-filter to create a frosted-glass effect on
+   the semi-transparent white background.
+   ============================================================ */
+
+nav {
+  position: sticky;      /* Stays at top of viewport while scrolling */
+  top: 0;
+  z-index: 100;          /* Sits above all other content */
+  background: rgba(255, 255, 255, 0.92); /* Slightly transparent white */
+  backdrop-filter: blur(8px);            /* Blurs content behind nav (frosted glass) */
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+/* "Deepak Singh" name on the left */
+.nav-name {
+  font-weight: 600;
+  font-size: 30px;
+  letter-spacing: -0.02em; /* Slightly tighter tracking for headings */
+}
+
+/* The list of nav links on the right */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none; /* Remove bullet points from <ul> */
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color .2s; /* Smooth colour change on hover */
+}
+
+.nav-links a:hover {
+  color: var(--ink); /* Darken on hover */
+}
+
+
+/* ============================================================
+   4. HERO SECTION
+   ------------------------------------------------------------
+   The first section visitors see. Centered content with a
+   max-width to keep lines readable on wide screens.
+   ============================================================ */
+
+.hero {
+  max-width: 760px;
+  margin: 0 auto;       /* Centers the content horizontally */
+  padding: 7rem 2rem 5rem;
+}
+
+/* Small blue pill badge above the headline */
+.hero-eyebrow {
+  display: inline-block;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 20px;  /* Pill shape */
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+/* Main headline — uses Playfair Display serif for personality */
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 5vw, 3.6rem); /* Scales between min and max based on screen width */
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 1.25rem;
+}
+
+/* The <span> inside h1 that turns blue */
+.hero h1 span {
+  color: var(--accent);
+}
+
+/* Intro paragraph under the headline */
+.hero-bio {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 580px;
+  margin-bottom: 2.5rem;
+  line-height: 1.75;
+}
+
+/* Row of buttons */
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;     /* Wraps to next line on small screens */
+  align-items: center;
+}
+
+/* Filled blue button */
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  padding: 11px 24px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity .2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-primary:hover {
+  opacity: 0.88; /* Slightly fade on hover */
+}
+
+/* Outline/ghost button */
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--border);
+  padding: 11px 24px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background .2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-ghost:hover {
+  background: var(--off); /* Light fill on hover */
+}
+
+/* Strip of location / email / phone info at the bottom of hero */
+.hero-meta {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border); /* Divider line above */
+}
+
+/* Each individual meta item (icon + text) */
+.hero-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.hero-meta-item svg {
+  opacity: 0.5; /* Dim the icon slightly */
+}
+
+
+/* ============================================================
+   5. SECTION SHARED STYLES
+   ------------------------------------------------------------
+   Reused across About, Skills, Projects, Experience, Contact.
+   Keeps consistent spacing and typography without repeating code.
+   ============================================================ */
+
+section {
+  padding: 5rem 2rem; /* Top/bottom breathing room */
+}
+
+/* Constrains content width and centers it */
+.section-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* Small uppercase label above each section title (e.g. "About me") */
+.section-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: .75rem;
+}
+
+/* The main heading of each section */
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+}
+
+
+/* ============================================================
+   6. ABOUT SECTION
+   ------------------------------------------------------------
+   Two-column layout: paragraphs on the left, stats on the right.
+   Stats are a 2x2 grid of number cards.
+   ============================================================ */
+
+#about {
+  background: var(--off); /* Slightly warm background to visually separate from hero */
+}
+
+/* Two columns side by side */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+/* Paragraph styling inside about text */
+.about-text p {
+  color: var(--muted);
+  margin-bottom: 1rem;
+  font-size: 15px;
+}
+
+/* 2x2 grid for the stat cards */
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Individual stat card (white box with border) */
+.stat-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+/* The large number in each stat card */
+.stat-num {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+/* The small description below the number */
+.stat-label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+
+/* ============================================================
+   7. SKILLS SECTION
+   ------------------------------------------------------------
+   A responsive grid of skill group cards. Each card has a
+   title and a row of tag pills. Grid auto-adjusts column
+   count based on screen width.
+   ============================================================ */
+
+/* Auto-fit grid: creates as many 200px columns as fit */
+.skills-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+}
+
+/* One skill category card */
+.skill-group {
+  background: var(--off);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+/* Category title inside the card (e.g. "Data Analytics") */
+.skill-group-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: .75rem;
+}
+
+/* Container that holds all the tags in a row */
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap; /* Tags wrap to next line if they don't fit */
+  gap: 6px;
+}
+
+/* Individual skill tag pill */
+.tag {
+  background: var(--white);
+  border: 1px solid var(--border);
+  color: var(--tag-color);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+
+/* ============================================================
+   8. PROJECTS SECTION
+   ------------------------------------------------------------
+   Grid of project cards. Hovering a card highlights its border
+   in blue to draw attention. Cards are responsive — on mobile
+   they stack into a single column.
+   ============================================================ */
+
+#projects {
+  background: var(--off);
+}
+
+/* Grid of project cards — min 300px each, wraps automatically */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+/* Individual project card */
+.project-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: border-color .2s; /* Smooth border colour change on hover */
+}
+
+/* Blue border highlight on hover */
+.project-card:hover {
+  border-color: var(--accent);
+}
+
+/* Teal tech stack label at the top of each card (e.g. "SQL · Excel") */
+.project-tag {
+  display: inline-block;
+  background: var(--teal-light);
+  color: var(--teal);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 5px;
+  margin-bottom: .75rem;
+}
+
+/* Project name */
+.project-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: .5rem;
+}
+
+/* Short description paragraph */
+.project-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* Bullet list of details */
+.project-bullets {
+  margin-top: .75rem;
+  padding-left: 1.1rem; /* Indents the list so bullets are visible */
+}
+
+.project-bullets li {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+
+
+/* ============================================================
+   9. EXPERIENCE (TIMELINE)
+   ------------------------------------------------------------
+   A vertical list of jobs and education entries. Each entry
+   has a date column on the left and content on the right,
+   created with a 2-column CSS grid.
+   ============================================================ */
+
+/* Stacks all timeline entries vertically */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Each entry: 130px date column + flexible content column */
+.timeline-item {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 1.5rem;
+}
+
+/* Date label (e.g. "Jul 2023 – Present") */
+.timeline-date {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+  padding-top: 3px; /* Aligns vertically with the role text */
+}
+
+/* Job title (e.g. "Team Leader") */
+.timeline-role {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+/* Company name shown in blue below the role */
+.timeline-company {
+  font-size: 13px;
+  color: var(--accent);
+  margin-bottom: .5rem;
+}
+
+/* Bullet list of responsibilities */
+.timeline-bullets {
+  padding-left: 1.1rem;
+}
+
+.timeline-bullets li {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+
+/* ============================================================
+   10. CONTACT SECTION
+   ------------------------------------------------------------
+   A single wide card with text on the left and clickable
+   contact links on the right. Links look like outlined buttons.
+   ============================================================ */
+
+#contact {
+  background: var(--off);
+}
+
+/* The full-width contact card */
+.contact-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap; /* Stacks vertically on small screens */
+}
+
+/* Heading and subtext on the left */
+.contact-left h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: .5rem;
+}
+
+.contact-left p {
+  font-size: 15px;
+  color: var(--muted);
+}
+
+/* Column of contact links on the right */
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+
+/* Individual contact link (email, phone, GitHub) */
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--off);
+  transition: border-color .2s; /* Smooth blue border on hover */
+  white-space: nowrap;         /* Prevents text wrapping inside the link */
+}
+
+.contact-link:hover {
+  border-color: var(--accent); /* Blue border on hover */
+}
+
+.contact-link svg {
+  opacity: 0.5;
+  flex-shrink: 0; /* Prevents icon from shrinking */
+}
+
+
+/* ============================================================
+   11. FOOTER
+   ------------------------------------------------------------
+   Simple one-line copyright at the bottom of the page.
+   ============================================================ */
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 13px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+
+/* ============================================================
+   12. RESPONSIVE — MOBILE (max-width: 600px)
+   ------------------------------------------------------------
+   Overrides for small screens. Key changes:
+   - About section: 2 columns → 1 column
+   - Timeline: 2 columns → 1 column (date above content)
+   - Contact card: horizontal → vertical stack
+   - Nav and sections: reduced padding
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+  /* Stack about grid to single column */
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Stack timeline date above content instead of side-by-side */
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: .25rem;
+  }
+
+  /* Stack contact card vertically */
+  .contact-card {
+    flex-direction: column;
+  }
+
+  /* Reduce nav side padding on small screens */
+  nav {
+    padding: 0 1rem;
+  }
+
+  /* Tighten nav link spacing */
+  .nav-links {
+    gap: 1.25rem;
+  }
+
+  /* Reduce section top/bottom padding */
+  section {
+    padding: 3.5rem 1.25rem;
+  }
+
+  /* Reduce hero padding */
+  .hero {
+    padding: 4rem 1.25rem 3rem;
+  }
+}

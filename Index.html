@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--
+  ============================================================
+  index.html — Deepak Singh Portfolio
+  ------------------------------------------------------------
+  This file contains ONLY the structure (HTML) of the page.
+  - All styles are in style.css
+  - All animations/interactions are in script.js
+  
+  Sections in order:
+    1. <head>   → page settings, font imports, file links
+    2. <nav>    → sticky top navigation bar
+    3. <header> → hero section (name, tagline, contact meta)
+    4. #about   → about me + stat cards
+    5. #skills  → skill groups with tags
+    6. #projects → project cards
+    7. #experience → work & education timeline
+    8. #contact → contact card with links
+    9. <footer> → copyright line
+  ============================================================
+-->
+
+<head>
+  <!-- Character encoding — always UTF-8 for international text support -->
+  <meta charset="UTF-8" />
+
+  <!-- Makes the page responsive on mobile screens -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- Browser tab title -->
+  <title>Deepak Singh — Data Analyst</title>
+
+  <!-- Google Fonts: Inter (body text) + Playfair Display (headings) -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Our custom stylesheet — all visual styling lives here -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ========================================================
+    NAV — Sticky navigation bar at the top of the page.
+    Stays visible as the user scrolls down.
+    Links use #id anchors to jump to each section.
+  ======================================================== -->
+  <nav>
+    <span class="nav-name">Deepak Singh</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- ========================================================
+    HERO — First thing visitors see.
+    Contains: availability badge, headline, bio, CTA buttons,
+    and contact meta (location, email, phone).
+  ======================================================== -->
+  <header class="hero">
+
+    <!-- Small badge above the heading -->
+    <span class="hero-eyebrow">Available for opportunities</span>
+
+    <!-- Main headline — <span> applies blue accent color -->
+    <h1>Turning raw data into<br/><span>clear decisions.</span></h1>
+
+    <!-- Short bio paragraph -->
+    <p class="hero-bio">
+      I'm Deepak Singh — a Data Analyst with expertise in SQL, Python, Power BI, and Excel.
+      I help organizations uncover insights hidden in their data and build dashboards that
+      actually get used.
+    </p>
+
+    <!-- Call-to-action buttons -->
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">
+        <!-- Arrow icon (inline SVG) -->
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+        View my work
+      </a>
+      <a href="#contact" class="btn-ghost">Get in touch</a>
+    </div>
+
+    <!-- Contact info strip below the buttons -->
+    <div class="hero-meta">
+
+      <!-- Location -->
+      <span class="hero-meta-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/>
+        </svg>
+        Vancouver, BC
+      </span>
+
+      <!-- Email -->
+      <span class="hero-meta-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <rect x="2" y="7" width="20" height="14" rx="2"/>
+          <path d="M16 3H8L2 7h20l-6-4z"/>
+        </svg>
+        Dilljeetsingh001@gmail.com
+      </span>
+
+      <!-- Phone -->
+      <span class="hero-meta-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 013 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.02z"/>
+        </svg>
+        +1 647-287-3536
+      </span>
+
+    </div>
+  </header>
+
+
+  <!-- ========================================================
+    ABOUT — Brief background + 4 highlight stat cards.
+    Two-column grid: text on left, stats on right.
+  ======================================================== -->
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label">About me</p>
+      <h2 class="section-title">Data as a lens, not just a tool</h2>
+
+      <div class="about-grid">
+
+        <!-- Left column: paragraphs -->
+        <div class="about-text">
+          <p>
+            I hold a Diploma in Computer Programming from Durham College and have spent the
+            last few years building a foundation across the full data workflow — from writing
+            optimized SQL queries and cleaning messy datasets to deploying interactive
+            Power BI dashboards.
+          </p>
+          <p>
+            My background also includes full-stack development, which means I can bridge the
+            gap between data infrastructure and front-end delivery — a rare combination that
+            lets me build end-to-end data products.
+          </p>
+          <p>Currently based in Vancouver, open to remote and hybrid opportunities across Canada.</p>
+        </div>
+
+        <!-- Right column: 2x2 stat cards -->
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-num">3+</div>
+            <div class="stat-label">Years of professional experience</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">5+</div>
+            <div class="stat-label">Data & dev tools mastered</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">4</div>
+            <div class="stat-label">End-to-end projects shipped</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">2</div>
+            <div class="stat-label">Languages beyond English</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+    SKILLS — Skill tags grouped into 4 categories.
+    Uses a responsive auto-fit grid (wraps on small screens).
+  ======================================================== -->
+  <section id="skills">
+    <div class="section-inner">
+      <p class="section-label">Core competencies</p>
+      <h2 class="section-title">What I work with</h2>
+
+      <div class="skills-groups">
+
+        <!-- Group 1: Data Analytics tools -->
+        <div class="skill-group">
+          <div class="skill-group-title">Data Analytics</div>
+          <div class="skill-tags">
+            <span class="tag">SQL</span>
+            <span class="tag">Excel</span>
+            <span class="tag">Power BI</span>
+            <span class="tag">Python</span>
+            <span class="tag">KPI Analysis</span>
+            <span class="tag">Reporting</span>
+          </div>
+        </div>
+
+        <!-- Group 2: Database technologies -->
+        <div class="skill-group">
+          <div class="skill-group-title">Databases</div>
+          <div class="skill-tags">
+            <span class="tag">MySQL</span>
+            <span class="tag">SQL Server</span>
+            <span class="tag">Query Optimization</span>
+            <span class="tag">Data Modeling</span>
+          </div>
+        </div>
+
+        <!-- Group 3: Programming languages and frameworks -->
+        <div class="skill-group">
+          <div class="skill-group-title">Programming</div>
+          <div class="skill-tags">
+            <span class="tag">Python</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">PHP</span>
+          </div>
+        </div>
+
+        <!-- Group 4: Tools and methodologies -->
+        <div class="skill-group">
+          <div class="skill-group-title">Tools & Methods</div>
+          <div class="skill-tags">
+            <span class="tag">Git</span>
+            <span class="tag">Postman</span>
+            <span class="tag">Power Query</span>
+            <span class="tag">DAX</span>
+            <span class="tag">Dashboarding</span>
+            <span class="tag">Data Cleaning</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+    PROJECTS — 4 project cards in a responsive grid.
+    Each card has: tech tag, title, description, bullet points.
+    Cards get a blue border highlight on hover (CSS handles this).
+  ======================================================== -->
+  <section id="projects">
+    <div class="section-inner">
+      <p class="section-label">Work samples</p>
+      <h2 class="section-title">Selected projects</h2>
+
+      <div class="projects-grid">
+
+        <!-- Project 1 -->
+        <div class="project-card">
+          <span class="project-tag">SQL · Excel</span>
+          <div class="project-title">Retail Data Analysis</div>
+          <p class="project-desc">End-to-end retail dataset analysis uncovering sales patterns and inventory trends.</p>
+          <ul class="project-bullets">
+            <li>SQL joins, aggregations, and window functions</li>
+            <li>Excel dashboards with Pivot Tables and advanced formulas</li>
+          </ul>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+          <span class="project-tag">Python · Pandas</span>
+          <div class="project-title">Customer Insights Analysis</div>
+          <p class="project-desc">Exploratory data analysis on customer behaviour to support business decisions.</p>
+          <ul class="project-bullets">
+            <li>EDA using Pandas and NumPy</li>
+            <li>Trend visualization with Matplotlib</li>
+          </ul>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+          <span class="project-tag">Power BI · DAX</span>
+          <div class="project-title">Python Sales Dashboard</div>
+          <p class="project-desc">Interactive dashboard tracking sales KPIs and customer behaviour over time.</p>
+          <ul class="project-bullets">
+            <li>Power Query for data transformation</li>
+            <li>DAX measures for automated reporting</li>
+          </ul>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card">
+          <span class="project-tag">React · Node.js</span>
+          <div class="project-title">Corporate Mail Application</div>
+          <p class="project-desc">Full-stack internal mail system with secure authentication and full CRUD.</p>
+          <ul class="project-bullets">
+            <li>JWT authentication with REST APIs</li>
+            <li>React front end, Node.js + PHP backend</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+    EXPERIENCE — Vertical timeline of jobs and education.
+    Each item has: date on the left, role/company/bullets on right.
+  ======================================================== -->
+  <section id="experience">
+    <div class="section-inner">
+      <p class="section-label">Background</p>
+      <h2 class="section-title">Experience & education</h2>
+
+      <div class="timeline">
+
+        <!-- Job 1: McDonald's -->
+        <div class="timeline-item">
+          <div class="timeline-date">Jul 2023 – Present</div>
+          <div class="timeline-content">
+            <div class="timeline-role">Team Leader & Maintenance Associate</div>
+            <div class="timeline-company">McDonald's Canada</div>
+            <ul class="timeline-bullets">
+              <li>Lead shift operations and support team members for efficient service</li>
+              <li>Monitor operational metrics and inventory levels to support business objectives</li>
+              <li>Identify process improvements and support data-driven decision-making</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Job 2: Durham College IT Help Desk -->
+        <div class="timeline-item">
+          <div class="timeline-date">May – Sept 2024</div>
+          <div class="timeline-content">
+            <div class="timeline-role">IT Help Desk</div>
+            <div class="timeline-company">Durham College</div>
+            <ul class="timeline-bullets">
+              <li>Built and maintained React/Node.js web applications for thousands of daily users</li>
+              <li>Developed scalable REST APIs with third-party service integrations</li>
+              <li>Conducted 200+ peer code reviews, reducing bug rate by 25%</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Education: Durham College Diploma -->
+        <div class="timeline-item">
+          <div class="timeline-date">May 2023 – Dec 2024</div>
+          <div class="timeline-content">
+            <div class="timeline-role">Diploma in Computer Programming</div>
+            <div class="timeline-company">Durham College — Oshawa, ON</div>
+            <ul class="timeline-bullets">
+              <li>Data Structures, Algorithms, Database Systems, SQL, Web Development</li>
+              <li>API Development, Software Engineering</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+    CONTACT — A single card with intro text and clickable links.
+    Links open email, phone dialer, and GitHub profile.
+  ======================================================== -->
+  <section id="contact">
+    <div class="section-inner">
+      <p class="section-label">Say hello</p>
+      <h2 class="section-title">Let's work together</h2>
+
+      <div class="contact-card">
+
+        <!-- Left side: short message -->
+        <div class="contact-left">
+          <h3>Open to new opportunities</h3>
+          <p>Whether it's a data analyst role, a contract project, or just a conversation — I'd love to hear from you.</p>
+        </div>
+
+        <!-- Right side: clickable contact links -->
+        <div class="contact-links">
+
+          <!-- Email link — opens default mail app -->
+          <a href="mailto:Dilljeetsingh001@gmail.com" class="contact-link">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <rect x="2" y="7" width="20" height="14" rx="2"/>
+              <path d="M16 3H8L2 7h20l-6-4z"/>
+            </svg>
+            Dilljeetsingh001@gmail.com
+          </a>
+
+          <!-- Phone link — opens dialer on mobile -->
+          <a href="tel:+16472873536" class="contact-link">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.07 12a19.79 19.79 0 01-3.07-8.67A2 2 0 013 1.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.02z"/>
+            </svg>
+            +1 647-287-3536
+          </a>
+
+          <!-- GitHub profile link — opens in new tab -->
+          <a href="https://github.com/Deepak-Singh-DataAnalyst" target="_blank" class="contact-link">
+            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+            Deepak-Singh-DataAnalyst
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+    FOOTER — Simple one-line copyright at the bottom.
+  ======================================================== -->
+  <footer>
+    <p>© 2025 Deepak Singh · Built with HTML, CSS & care</p>
+  </footer>
+
+
+  <!-- Load JavaScript last so the HTML is fully loaded before scripts run -->
+  <script src="script.js"></script>
+
+</body>
+</html>
